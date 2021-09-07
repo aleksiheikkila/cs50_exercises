@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+    <h2>Current portfolio holdings</h2>
+
+    <p>Hello {{ session["username"] }}! Your current portfolio: </p>
+
+    <table class="portfolio">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Shares</th>
+                <th>Current price</th>
+                <th>Total value</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for holding_dict in portfolio_data %}
+                <tr>
+                    <td>{{ holding_dict.symbol }}</td>
+                    <td>{{ holding_dict.shares  }}</td>
+                    <td>{{ holding_dict.current_price | usd }}</td>
+                    <td>{{ holding_dict.total_value | usd }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div style="margin: 10px;">
+        <p>Cash available: <b>{{ cash | usd}}</b></p>
+        <p>Grand total: <b>{{ grand_total | usd }}</b></p>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,11 @@
+sort1 uses: bubble sort
+
+How do you know?: It's the fastest for the sorted arrays.
+
+sort2 uses: merge sort
+
+How do you know?: It's clearly the fastest for the large random list of numbers. It's O(nlogn) vs O(n^2) for the other algos.
+
+sort3 uses: selection sort
+
+How do you know?: Faster than bubble sort for the reversed array (less swapping to do)

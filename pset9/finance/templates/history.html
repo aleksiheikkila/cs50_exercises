@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Transaction history
+{% endblock %}
+
+{% block main %}
+    <h2>Transaction history</h2>
+
+    <p>Hello {{ session["username"] }}! Your transaction history: </p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Timestamp</th>
+                <th>Transaction type</th>
+                <th>Symbol</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>Total value</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for transaction_dict in transaction_data %}
+                <tr>
+                    <td>{{ transaction_dict.ts }}</td>
+                    <td>{{ transaction_dict.type  }}</td>
+                    <td>{{ transaction_dict.symbol }}</td>
+                    <td>{{ transaction_dict.shares }}</td>
+                    <td>{{ transaction_dict.share_price | usd }}</td>
+                    <td>{{ transaction_dict.total_value | usd }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

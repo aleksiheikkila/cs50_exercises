@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+
+        <script>
+            // TODO: Add code to check answers to questions
+            document.addEventListener('DOMContentLoaded', function() {
+                let feedback = document.querySelector('#Q1_feedback');
+                let correct_btn = document.querySelector('.right');
+                let incorrect_btns = document.querySelectorAll('.wrong');
+
+                // correct one
+                correct_btn.onclick = function() {
+                    correct_btn.style.backgroundColor = 'green';
+                    feedback.innerHTML = "Correct!";
+                };
+
+                // Incorrect ones
+                for (let i = 0; i < incorrect_btns.length; i++)
+                {
+                    incorrect_btns[i].addEventListener('click', function() {
+                        incorrect_btns[i].style.backgroundColor = 'red';
+                        feedback.innerHTML = "Incorrect!";
+                    });
+                }
+
+                // part 2
+                let Q2_ans = document.querySelector('#free_ans');
+                let Q2_feedback = document.querySelector('#Q2_feedback');
+                let Q2_submit = document.querySelector('#free_submit');
+
+                Q2_submit.addEventListener("click", function() {
+                    if (Q2_ans.value.trim().toLowerCase() == "helsinki")
+                    {
+                        Q2_ans.style.backgroundColor = "green";
+                        Q2_feedback.innerHTML = "Correct!";
+                    }
+                    else
+                    {
+                        Q2_ans.style.backgroundColor = "red";
+                        Q2_feedback.innerHTML = "Incorrect!";
+                    }
+                });
+            });
+
+        </script>
+
+    </head>
+    <body>
+        <div class="jumbotron">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <h3>What is the most populous country in the world?</h3>
+
+                <p id="Q1_feedback"></p>
+
+                <!-- TODO: Add multiple choice question here -->
+                <button id="ans1" class="wrong">U.S</button>
+                <button id="ans2" class="right">China</button>
+                <button id="ans3" class="wrong">Indonesia</button>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+
+                <h3>What is the capital of Finland?</h3>
+                <p id="Q2_feedback"></p>
+                <!-- TODO: Add free response question here -->
+                <input id="free_ans" type="text">
+                <button id="free_submit">Submit</button>
+            </div>
+
+        </div>
+    </body>
+</html>

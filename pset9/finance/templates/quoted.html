@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+    <h2>Data for {{ quote_data.name }}</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Company name</th>
+                <th>Symbol</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+                    <td>{{ quote_data.name }}</td>
+                    <td>{{ quote_data.symbol }}</td>
+                    <td>{{ quote_data.price | usd }}</td>
+                </tr>
+        </tbody>
+    </table>
+{% endblock %}
